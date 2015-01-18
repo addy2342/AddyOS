@@ -5,12 +5,11 @@ For the class OS2
 
 #Project Todo List
 - [ ] Process
- - [ ] (Scheduler: Preemptive):
  - [ ] Create
  - [ ] Run
  - [ ] Syspend
  - [ ] Terminate
-- [ ] (Preemptive-) Scheduler
+- [ ] Scheduler (Preemptive)
  - [ ] Context Switching
 - [ ] Memory Management
  - [ ] malloc
