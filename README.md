@@ -7,7 +7,7 @@ For the class OS2
 - [ ] Process
  - [ ] Create
  - [ ] Run
- - [ ] Syspend
+ - [ ] Suspend
  - [ ] Terminate
 - [ ] Scheduler (Preemptive)
  - [ ] Context Switching
@@ -15,19 +15,19 @@ For the class OS2
  - [ ] malloc
  - [ ] free
  - [ ] fragmentation (first, best, or worst fit)
- - [ ] Virtuell Addressing 
+ - [ ] Virtual Addressing 
  - - [ ] paging
 - [ ] I/O Devises
- - [ ] Interupts
+ - [ ] Interrupts
 - [ ] Threads
- - [ ] Syncronisation
+ - [ ] Synchronization
   - [ ] Semaphores
    - [ ] Signal
    - [ ] Wait
-   - [ ] Suspenc
+   - [ ] Suspend
    - [ ] Scheduling
 - [ ] Communication
- - [ ] Send / Recive
+ - [ ] Send / Receive
  - [ ] Shared Mem
 - [ ] Booting
 - [ ] Application on the OS
@@ -35,7 +35,7 @@ For the class OS2
 - [ ] Testing by other Applications from Course Members (Mix and Match)
 
 - [ ] Deliverables
-  - [ ] Process with Managment and Semaphores
+  - [ ] Process with Management and Semaphores
   - [ ] Memory Management
   - [ ] Application
   - [ ] Everything
