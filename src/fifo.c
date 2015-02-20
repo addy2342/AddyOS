@@ -34,3 +34,26 @@ FIFO  OS_InitFiFo(void){
   }
   return INVALIDFIFO;
 }
+
+//decleard in os.h
+void  OS_Write( FIFO f, int val ){
+  volatile uint32_t *seg7_left = (uint32_t*)0x10000030;
+  volatile uint32_t *seg7_right = (uint32_t*)0x10000020;
+  *(seg7_left) = 0x7106713F; //FIFO
+  *(seg7_right) = 0x795078; //Ert
+
+  fifo_last[f] = (fifo_last[f]++) % FIFOSIZE;
+  fifo_flag[f] = FIFO_INUSE_NOT_EMPTY;
+  fifos_data[f][fifo_last[f]] = val;
+}
+
+//decleard in os.h
+BOOL  OS_Read( FIFO f, int *val ){
+  if(fifo_flag[f] = FIFO_INUSE_EMPTY) return FALSE;
+  val = fifo_first[f];
+  fifo_first[f] = (fifo_first[f]++) % FIFOSIZE;
+  if(fifo_first[f] == fifo_last[f])
+    fifo_flag[f] = FIFO_INUSE_EMPTY;
+  fifos_data[f][fifo_last[f]] = val;
+  return TRUE;
+}
