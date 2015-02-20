@@ -6,7 +6,7 @@
 FIFO fifos_data[MAXFIFO][FIFOSIZE]; // the fifos
 unsigned int fifos_first[MAXFIFO]; // idx of first fifo value
 unsigned int fifos_last[MAXFIFO]; // idx of last fifo value
-char fifos_flags[MAXFIFO]; // is set to 1  if fifo at number idx is free
+char fifos_flag[MAXFIFO]; // is set to 1  if fifo at number idx is free
 
 /**
 * sets all values in the structure to zero and marks all fifos to free.

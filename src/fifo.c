@@ -27,5 +27,10 @@ FIFO  OS_InitFiFo(void){
   *(seg7_left) = 0x7106713F; //FIFO
   *(seg7_right) = 0x06540678; //Init
 
+  FIFO idx = 0;
+  for(;idx<MAXFIFO;idx++){ // iterat over all fifos
+    if(!fifos_flag[idx])
+      return (idx+1); // INVALIDFIFO = 0 so we start at one
+  }
   return INVALIDFIFO;
 }
