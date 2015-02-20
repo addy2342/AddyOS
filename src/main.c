@@ -26,4 +26,11 @@ int main(void){
     //http://www.uize.com/examples/seven-segment-display.html get hex values from 7-seg-image
     *(seg7_left) = 0x775E5EEE; //AddY
     *(seg7_right) = 0x5B4FE65B; //2342
+
+  OS_Init(); // Initalise the OS
+  OS_InitFiFo();
+}
+
+void OS_Init(){
+  init_fifos();
 }

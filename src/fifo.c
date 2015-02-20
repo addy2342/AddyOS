@@ -1,3 +1,4 @@
+#include <stdint.h>
 #include "include/fifo.h"
 
 void clear_fifo(FIFO f);
@@ -21,5 +22,10 @@ void clear_fifo(FIFO f){
 
 //decleard in os.h
 FIFO  OS_InitFiFo(void){
+  volatile uint32_t *seg7_left = (uint32_t*)0x10000030;
+  volatile uint32_t *seg7_right = (uint32_t*)0x10000020;
+  *(seg7_left) = 0x7106713F; //FIFO
+  *(seg7_right) = 0x06540678; //Init
+
   return INVALIDFIFO;
 }
