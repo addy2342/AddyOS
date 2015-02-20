@@ -27,12 +27,8 @@ void clear_fifo(FIFO f){
 */
 //decleard in os.h
 FIFO  OS_InitFiFo(void){
-  volatile uint32_t *seg7_left = (uint32_t*)HEX7_HEX4_BASE;
-  volatile uint32_t *seg7_right = (uint32_t*)HEX3_HEX0_BASE;
-  *(seg7_left) = 0x7106713F; //FIFO
-  *(seg7_right) = 0x06540678; //Init
-
   FIFO idx = 0;
+  write_to_7seg(0x7106713F, 0x06540678); // FIFO Init
   for(;idx<MAXFIFO;idx++){ // iterat over all fifos
     if(!fifos_flag[idx])
       return (idx+1); // INVALIDFIFO = 0 so we start at one
@@ -54,6 +50,5 @@ BOOL  OS_Read( FIFO f, int *val ){
   fifos_first[f] = (fifos_first[f]++) % FIFOSIZE;
   if(fifos_first[f] == fifos_last[f])
     fifos_flag[f] = FIFO_INUSE_EMPTY;
-  fifos_data[f][fifos_last[f]] = *val;
   return TRUE;
 }
