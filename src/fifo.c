@@ -17,9 +17,13 @@ void clear_fifo(FIFO f){
   }
   fifos_first[f] = 0;
   fifos_last[f] = 0;
-  fifos_flags[f] = 1;
+  fifos_flag[f] = FIFO_NOT_INUSE;
 }
 
+/**
+* Finds a free fifo and sets it to used
+* @return the index of a free fifo or -1
+*/
 //decleard in os.h
 FIFO  OS_InitFiFo(void){
   volatile uint32_t *seg7_left = (uint32_t*)0x10000030;
@@ -42,18 +46,18 @@ void  OS_Write( FIFO f, int val ){
   *(seg7_left) = 0x7106713F; //FIFO
   *(seg7_right) = 0x795078; //Ert
 
-  fifo_last[f] = (fifo_last[f]++) % FIFOSIZE;
-  fifo_flag[f] = FIFO_INUSE_NOT_EMPTY;
-  fifos_data[f][fifo_last[f]] = val;
+  fifos_last[f] = (fifos_last[f]++) % FIFOSIZE;
+  fifos_flag[f] = FIFO_INUSE_NOT_EMPTY;
+  fifos_data[f][fifos_last[f]] = val;
 }
 
 //decleard in os.h
 BOOL  OS_Read( FIFO f, int *val ){
-  if(fifo_flag[f] = FIFO_INUSE_EMPTY) return FALSE;
-  val = fifo_first[f];
-  fifo_first[f] = (fifo_first[f]++) % FIFOSIZE;
-  if(fifo_first[f] == fifo_last[f])
-    fifo_flag[f] = FIFO_INUSE_EMPTY;
-  fifos_data[f][fifo_last[f]] = val;
+  if(fifos_flag[f] = FIFO_INUSE_EMPTY) return FALSE;
+  *val = fifos_first[f];
+  fifos_first[f] = (fifos_first[f]++) % FIFOSIZE;
+  if(fifos_first[f] == fifos_last[f])
+    fifos_flag[f] = FIFO_INUSE_EMPTY;
+  fifos_data[f][fifos_last[f]] = *val;
   return TRUE;
 }
