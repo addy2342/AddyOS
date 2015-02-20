@@ -1,3 +1,4 @@
+#include <stdint.h>
 #include "include/os.h"
 
 /* function prototypes */
@@ -19,10 +20,10 @@ asm ("jmp   r2");
 }
 
 int main(void){
-  while(1){
-    int *seg7_left = 0x10000030;
-    int *seg7_right = 0x10000020;
-    *seg7_left = 0x775E5EEE; //AddY
-    *seg7_right = 0x3F6D0606; //OSII
-  }
+    char * txt = "HALLLO Addy!";
+    volatile uint32_t * seg7_left = (uint32_t *)0x10000030;
+    volatile uint32_t * seg7_right = (uint32_t*)0x10000020;
+    //http://www.uize.com/examples/seven-segment-display.html get hex values from 7-seg-image
+    *(seg7_left) = 0x775E5EEE; //AddY
+    *(seg7_right) = 0x5B4FE65B; //2342
 }
