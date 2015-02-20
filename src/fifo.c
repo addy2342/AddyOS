@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include "include/fifo.h"
+#include "include/address_map.h"
 
 void clear_fifo(FIFO f);
 
@@ -26,8 +27,8 @@ void clear_fifo(FIFO f){
 */
 //decleard in os.h
 FIFO  OS_InitFiFo(void){
-  volatile uint32_t *seg7_left = (uint32_t*)0x10000030;
-  volatile uint32_t *seg7_right = (uint32_t*)0x10000020;
+  volatile uint32_t *seg7_left = (uint32_t*)HEX7_HEX4_BASE;
+  volatile uint32_t *seg7_right = (uint32_t*)HEX3_HEX0_BASE;
   *(seg7_left) = 0x7106713F; //FIFO
   *(seg7_right) = 0x06540678; //Init
 
@@ -41,11 +42,6 @@ FIFO  OS_InitFiFo(void){
 
 //decleard in os.h
 void  OS_Write( FIFO f, int val ){
-  volatile uint32_t *seg7_left = (uint32_t*)0x10000030;
-  volatile uint32_t *seg7_right = (uint32_t*)0x10000020;
-  *(seg7_left) = 0x7106713F; //FIFO
-  *(seg7_right) = 0x795078; //Ert
-
   fifos_last[f] = (fifos_last[f]++) % FIFOSIZE;
   fifos_flag[f] = FIFO_INUSE_NOT_EMPTY;
   fifos_data[f][fifos_last[f]] = val;

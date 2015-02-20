@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include "include/os.h"
+#include "include/address_map.h"
 
 /* function prototypes */
 int main(void);
@@ -20,9 +21,9 @@ asm ("jmp   r2");
 }
 
 int main(void){
-    char * txt = "HALLLO Addy!";
-    volatile uint32_t * seg7_left = (uint32_t *)0x10000030;
-    volatile uint32_t * seg7_right = (uint32_t*)0x10000020;
+    char * txt = "Hallo Addy!";
+    volatile uint32_t * seg7_left = (uint32_t *)HEX7_HEX4_BASE;
+    volatile uint32_t * seg7_right = (uint32_t*)HEX3_HEX0_BASE;
     //http://www.uize.com/examples/seven-segment-display.html get hex values from 7-seg-image
     *(seg7_left) = 0x775E5EEE; //AddY
     *(seg7_right) = 0x5B4FE65B; //2342
