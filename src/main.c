@@ -2,6 +2,7 @@
 #include "include/os.h"
 #include "include/address_map.h"
 #include "include/log.h"
+#include "include/tests.h"
 
 /* function prototypes */
 int main(void);
@@ -26,8 +27,10 @@ int main(void){
   //http://www.uize.com/examples/seven-segment-display.html get hex values from 7-seg-image
   write_to_7seg(0x775E5EEE, 0x5B4FE65B); //AddY 2342
   write_to_LCD(0,0, txt);
+
   OS_Init(); // Initalise the OS
   OS_InitFiFo();
+  run_self_test();
 }
 
 void OS_Init(){

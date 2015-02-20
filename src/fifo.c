@@ -28,7 +28,6 @@ void clear_fifo(FIFO f){
 //decleard in os.h
 FIFO  OS_InitFiFo(void){
   FIFO idx = 0;
-  write_to_7seg(0x7106713F, 0x06540678); // FIFO Init
   for(;idx<MAXFIFO;idx++){ // iterat over all fifos
     if(!fifos_flag[idx])
       return (idx+1); // INVALIDFIFO = 0 so we start at one
