@@ -1,3 +1,5 @@
+#include "include/os.h"
+
 /* function prototypes */
 int main(void);
 
