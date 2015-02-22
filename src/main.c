@@ -31,6 +31,13 @@ int main(void){
   OS_Init(); // Initalise the OS
   OS_InitFiFo();
   run_self_test();
+  
+  write_to_7seg(0x775E5EEE, 0x5B4FE65B); //AddY 2342
+  write_to_LCD(0,0, txt);
+  
+  run_redlights_app();
+  run_greenlights_app();
+
 }
 
 void OS_Init(){
