@@ -7,6 +7,11 @@
 /* function prototypes */
 int main(void);
 
+/* Application prototypes*/
+void run_greenlights_app(void);
+void run_redlights_app(void);
+
+
 /* The assembly language code below handles CPU reset processing */
 void the_reset (void) __attribute__ ((section (".reset")));
 void the_reset (void)
@@ -35,9 +40,8 @@ int main(void){
   write_to_7seg(0x775E5EEE, 0x5B4FE65B); //AddY 2342
   write_to_LCD(0,0, txt);
   
-  run_redlights_app();
-  run_greenlights_app();
-
+  OS_Create(run_redlights_app, 1, SPORADIC, 0);
+  OS_Create(run_greenlights_app, 1, SPORADIC, 0);
 }
 
 void OS_Init(){
