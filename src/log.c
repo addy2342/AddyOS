@@ -4,6 +4,7 @@
 void write_to_LCD(int x, int y, char *text_ptr){
   volatile char * LCD_display_ptr = (char *)LCD;
   char instruction = x;
+  *(LCD_display_ptr) = 1; //clear display
   if (y != 0)
     instruction |= 0x40; // set bit 6 for bottom row
   instruction |= 0x80; // need to set bit 7 to set the cursor location
