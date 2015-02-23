@@ -4,8 +4,8 @@
 PID OS_Create(void (*f)(void), int arg, unsigned int level, unsigned int n){
   int idx = 0;
   for(;idx<MAXPROCESS;idx++){
-    if(free_processes_slot[idx] == 0){
-      free_processes_slot[idx] = 1;
+    if(free_processes_slot[idx]){
+      free_processes_slot[idx] = 0;
       process[idx].run = f;
       process[idx].arg = arg;
       process[idx].level = level;
@@ -13,7 +13,6 @@ PID OS_Create(void (*f)(void), int arg, unsigned int level, unsigned int n){
       process[idx].run();
       return idx;
     }
-
   }
   return INVALIDPID;
 }

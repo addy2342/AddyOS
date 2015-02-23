@@ -11,6 +11,7 @@ typedef struct process_t{
 }process_t;
 
 process_t process[MAXPROCESS]; // the process map
-unsigned int free_processes_slot[MAXPROCESS]; // idx of not used processes slots
+// 1 if slot  of not used processes slots
+unsigned int free_processes_slot[MAXPROCESS];
 
 #endif /* _PROCESS_H_ */
