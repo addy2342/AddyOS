@@ -26,7 +26,7 @@ void clear_fifo(FIFO f){
 * @return the index of a free fifo or -1
 */
 //decleard in os.h
-FIFO  OS_InitFiFo(void){
+FIFO OS_InitFiFo(void){
   FIFO idx = 0;
   for(;idx<MAXFIFO;idx++){ // iterat over all fifos
     if(!fifos_flag[idx])
@@ -36,15 +36,15 @@ FIFO  OS_InitFiFo(void){
 }
 
 //decleard in os.h
-void  OS_Write( FIFO f, int val ){
+void OS_Write( FIFO f, int val ){
   fifos_last[f] = (fifos_last[f]++) % FIFOSIZE;
   fifos_flag[f] = FIFO_INUSE_NOT_EMPTY;
   fifos_data[f][fifos_last[f]] = val;
 }
 
 //decleard in os.h
-BOOL  OS_Read( FIFO f, int *val ){
-  if(fifos_flag[f] = FIFO_INUSE_EMPTY) return FALSE;
+BOOL OS_Read( FIFO f, int *val ){
+  if(fifos_flag[f] == FIFO_INUSE_EMPTY) return FALSE;
   *val = fifos_first[f];
   fifos_first[f] = (fifos_first[f]++) % FIFOSIZE;
   if(fifos_first[f] == fifos_last[f])
