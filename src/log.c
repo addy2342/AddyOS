@@ -36,3 +36,20 @@ void write_to_7seg(int left, int right){
   *(seg7_left) = left;
   *(seg7_right) = right;
 }
+
+void write_to_LEDR(int number){
+  volatile uint32_t *ledr = (uint32_t *)LEDR;
+  *(ledr) = number; 
+}
+void clear_LEDR(){
+  write_to_LEDR(0);
+}
+
+void write_to_LEDG(int number){
+  volatile uint32_t *ledg = (uint32_t *)LEDG;
+  *(ledg) = number; 
+}
+
+void clear_LEDG(){
+  write_to_LEDG(0);
+}
