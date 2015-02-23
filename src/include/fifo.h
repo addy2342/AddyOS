@@ -3,7 +3,7 @@
 
 #define FIFO_NOT_INUSE 0
 #define FIFO_INUSE_EMPTY 1
-#define FIFO_INUSE_NOT_EMPTY 0
+#define FIFO_INUSE_NOT_EMPTY 2
 #include "os.h"
 
 FIFO fifos_data[MAXFIFO][FIFOSIZE]; // the fifos
@@ -16,7 +16,7 @@ unsigned int fifos_last[MAXFIFO]; // idx of last fifo value
 * 2 = in use not empty
 *     to distinguisch full and empty when both indecies are equal
 */
-char fifos_flag[MAXFIFO]; // is set to 1  if fifo at number idx is free
+char fifos_flag[MAXFIFO];
 
 /**
 * sets all values in the structure to zero and marks all fifos to free.
