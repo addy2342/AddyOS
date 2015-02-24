@@ -13,12 +13,13 @@ For the class OS2
 
 #Todo List / Status:
 
-###Deliverables
+##Deliverables
 - [ ] Process with Management and Semaphores
 - [ ] Memory Management
 - [ ] Application
 - [ ] Everything
-###Communication
+
+##Communication
 - [ ] Send / Receive
  - [ ] FIFO:
   - [x] Structure
@@ -33,7 +34,8 @@ For the class OS2
   - [ ] Signal
   - [ ] Wait
 - [ ] Shared Mem
-###Process
+
+##Process
 - [x] Structure
 - [x] Create
   - [ ] Testing/Fixing
@@ -41,30 +43,38 @@ For the class OS2
   - [ ] Testing/Fixing
 - [ ] Suspend
 - [ ] Terminate
-###Threads
+
+##Threads
  - [ ] Synchronization
    - [ ] Signal
    - [ ] Wait
    - [ ] Suspend
-###Scheduler (Preemptive)
+
+##Scheduler (Preemptive)
  - [x] Structure
  - [ ] Context Switching
  - [ ] Types
    - [ ] FCFS
    - [ ] random
    - [ ] RoundRobin
-###Memory Management
+
+##Memory Management
  - [ ] malloc
  - [ ] free
  - [ ] fragmentation (first, best, or worst fit)
  - [ ] Virtual Addressing 
    - [ ] paging
-###I/O Devises
+
+##I/O Devises
  - [ ] Interrupts
-###Application on the OS
+ - [ ] VGA
+ - [ ] Keyboard
+
+##Application on the OS
  - [ ] self-test (run_self_test)(LOG, FIFO, SEM)(work in progress)
  - [ ] blinkenlights
-###Other
+
+##Other
 - [x] Booting
 - [ ] Testing by other Applications from Course Members (Mix and Match)
 - [x] LOG write to LCD, LED, 7Seg (todo: VGA)
